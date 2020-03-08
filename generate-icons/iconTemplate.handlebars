@@ -1,0 +1,3 @@
+{{#each icons}}
+export const {{this.name}} = {viewBox: [{{this.viewBox}}], paths: [{{#each this.paths}}"{{this}}",{{/each}}]};
+{{/each}}

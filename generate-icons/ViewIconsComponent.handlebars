@@ -1,0 +1,19 @@
+import * as React from 'react';
+import * as icons from "./icons";
+import { SVGIcon } from './SvgIcon';
+
+export const ViewAllIcons = () => {
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) { color +=letters[Math.floor(Math.random() * 16)]; } return color; 
+    }
+
+    return (
+        <div>
+            {{#each icons}}
+            {{this.name}}: <SVGIcon icon={ icons.{{this.name}} } fill={getRandomColor()} /> <br/>
+            {{/each}}
+        </div>
+    )
+}
