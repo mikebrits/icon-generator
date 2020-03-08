@@ -17,7 +17,7 @@ function readFiles(dirname, onFileContent, onError = () => {}) {
 function getSvgData() {
     const data = [];
     readFiles(
-        __dirname + '/icon-pack/',
+        './icon-pack/',
         (filename, content) => {
             let viewBox = [];
             let paths = [];
