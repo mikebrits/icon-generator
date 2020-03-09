@@ -2,6 +2,7 @@ import * as React from 'react';
 import { CSSProperties } from 'react';
 
 interface IconDefinition {
+    name: string;
     viewBox: number[];
     paths: string[];
 }
@@ -15,12 +16,12 @@ interface SVGIconProps {
 }
 
 const sizeMap = {
-    xs: 6/24,
-    s: 12/24,
-    m: 16/24,
-    l: 24/24,
-    xl: 32/24
-}
+    xs: 6 / 24,
+    s: 12 / 24,
+    m: 16 / 24,
+    l: 24 / 24,
+    xl: 32 / 24,
+};
 
 export const SVGIcon = ({
     icon,
@@ -30,18 +31,23 @@ export const SVGIcon = ({
     className = '',
 }: SVGIconProps) => (
     <svg
+        role="img"
         width={icon.viewBox[0]}
-        style={{...style, transform: `scale(${sizeMap[size]})`, backgroundColor: 'transparent'}}
+        style={{
+            ...style,
+            transform: `scale(${sizeMap[size]})`,
+            backgroundColor: 'transparent',
+        }}
         height={icon.viewBox[1]}
         className={className}
         xmlns="http://www.w3.org/2000/svg"
         viewBox={`0 0 ${icon.viewBox[0]} ${icon.viewBox[1]}`}
         xmlnsXlink="http://www.w3.org/1999/xlink"
+        aria-labelledby={`${icon.name}-title`}
     >
+        <title id={`${icon.name}-title`}>{icon.name}</title>
         {icon.paths.map((path: string, index: number) => {
-            return (
-                <path key={index} fillRule="evenodd" clipRule="evenodd" fill={fill} d={path} />
-            );
+            return <path key={index} fillRule="evenodd" clipRule="evenodd" fill={fill} d={path} />;
         })}
     </svg>
 );
